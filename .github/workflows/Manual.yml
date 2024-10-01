@@ -1,4 +1,4 @@
-name: Manual Workflow
+name: Manual Workflow with Self-Hosted Runner
 
 # Disparador manual
 on: 
@@ -6,11 +6,11 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Checkout do código
         uses: actions/checkout@v3
 
       - name: Exibir mensagem de sucesso
-        run: echo "Workflow executado com sucesso!"
+        run: echo "Executando no self-hosted runner!"
