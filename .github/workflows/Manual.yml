@@ -1,12 +1,16 @@
 name: Manual Workflow
 
-on:
+# Disparador manual
+on: 
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      
-name: Run a script
-      run: echo "This is a manual workflow execution"
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      - name: Exibir mensagem de sucesso
+        run: echo "Workflow executado com sucesso!"
