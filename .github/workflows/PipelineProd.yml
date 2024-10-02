@@ -1,25 +1,20 @@
 name: Pipeline Prod
 
+# Controls when the workflow will run
 on:
+  pull_request:
+    branches: [ "main" ]
+
   workflow_dispatch:
-    inputs:
-      environment:
-        description: 'Environment to deploy to'
-        required: true
-        default: Prod
 
 jobs:
+
   deploy:
     runs-on: ubuntu-latest
-
+    environment: Prod
+    
     steps:
-      - name: Verificar o ambiente
-        run: echo "Ambiente de deploy: ${{ github.event.inputs.environment }}"
-
-      - name: Acessar variável de ambiente
-        run: echo "A URL do ambiente Prod é: ${{ vars.URL }}"
-
-      - name: Acessar segredo do ambiente
-        run: echo "A senha secreta é: ${{ secrets.senha }}"
-        env:
-          SENHA: ${{ secrets.senha }}
+      - name: Print URL
+        run: echo "Teste ${{ vars.URL }}"
+      - name: Print Senha
+        run: echo "Teste ${{secrets.senha}}"
